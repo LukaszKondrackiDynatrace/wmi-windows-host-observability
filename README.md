@@ -1,1 +1,1 @@
-# wmi-windows-host-observability
+# WMI Windows Host Observability
