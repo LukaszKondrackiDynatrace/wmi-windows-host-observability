@@ -1,0 +1,1108 @@
+name: com.dynatrace.extension.host-observability
+version: 1.1.4
+minDynatraceVersion: "1.227"
+author:
+  name: Dynatrace
+
+metrics:
+  - key: com.dynatrace.extension.host-observability.host.cpu.time.processor
+    metadata:
+      displayName: Used processor time
+      description: Percent of used processor time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.host.cpu.time.idle
+    metadata:
+      displayName: Idle processor time
+      description: Percent of idle processor time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.host.cpu.time.user
+    metadata:
+      displayName: User processor time
+      description: Percent of user processor time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.host.memory.bytes.available
+    metadata:
+      displayName: Available memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.bytes.commited
+    metadata:
+      displayName: Commited memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.bytes.commited.inuse
+    metadata:
+      displayName: Used commited memory
+      description: Percentage of using commited memory
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.host.memory.pool.nonpaged
+    metadata:
+      displayName: Non-paged memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.pool.paged
+    metadata:
+      displayName: Paged memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.pagefaults.persec
+    metadata:
+      displayName: Page faults/s
+      description: Number of page faults per second
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.host.swap.allocated
+    metadata:
+      displayName: Allocated swap memory
+      description: Allocated bytes for swap memory
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.swap.current
+    metadata:
+      displayName: Used swap memory
+      description: Bytes of current used swap memory
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.swap.peak
+    metadata:
+      displayName: Swap memory peak
+      description: Bytes of peak usage of swap memory
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.processes
+    metadata:
+      displayName: Processes
+      description: Number of processes
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.host.threads
+    metadata:
+      displayName: Threads
+      description: Number of threads
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.disk.bytes.persec
+    metadata:
+      displayName: Disk usage/s
+      description: Disk bytes used per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.disk.bytes.read.persec
+    metadata:
+      displayName: Disk read bytes/s
+      description: Disk bytes read per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.disk.read.persec
+    metadata:
+      displayName: Disk reads/s
+      description: Number of disk reads per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.disk.bytes.write.persec
+    metadata:
+      displayName: Disk write bytes/s
+      description: Disk bytes write per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.disk.write.persec
+    metadata:
+      displayName: Disk writes/s
+      description: Number of disk writes per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.disk.transfer.persec
+    metadata:
+      displayName: Disk transfers/s
+      description: Number of disk transfers per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.disk.usage.percent
+    metadata:
+      displayName: Disk time
+      description: Percent of disk time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.disk.usage.read.percent
+    metadata:
+      displayName: Disk read time
+      description: Percent of disk read time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.disk.usage.write.percent
+    metadata:
+      displayName: Disk write time
+      description: Percent of disk write time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.disk.usage.idle.percent
+    metadata:
+      displayName: Disk idle time
+      description: Percent of disk idle time
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.disk.read.avg.bytes
+    metadata:
+      displayName: Disk read bytes
+      description: Average bytes per disk read
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.disk.write.avg.bytes
+    metadata:
+      displayName: Disk write bytes
+      description: Average bytes per disk write
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.disk.transfer.avg.bytes
+    metadata:
+      displayName: Disk transfer bytes
+      description: Average bytes per disk transfer
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.disk.queue.avg.read
+    metadata:
+      displayName: Disk read queue
+      description: Average length of disk read queue
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.disk.queue.avg.write
+    metadata:
+      displayName: Disk write queue
+      description: Average length of disk write queue
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.disk.logical.free.megabytes
+    metadata:
+      displayName: Free disk memory
+      description: Megabytes of free disk memory
+      unit: MegaByte
+  - key: com.dynatrace.extension.host-observability.disk.logical.free.percent
+    metadata:
+      displayName: Free disk memory %
+      description: Percents of free disk memory
+      unit: Percent
+  - key: com.dynatrace.extension.host-observability.network.bytes.persec
+    metadata:
+      displayName: Traffic bytes/s
+      description: Network traffic bytes per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.network.bytes.received.persec
+    metadata:
+      displayName: Traffic received bytes/s
+      description: Network traffic received bytes per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.network.bytes.sent.persec
+    metadata:
+      displayName: Traffic sent bytes/s
+      description: Network traffic sent bytes per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.persec
+    metadata:
+      displayName: Traffic packets/s
+      description: Network traffic packets per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.received.persec
+    metadata:
+      displayName: Traffic packets received/s
+      description: Network traffic received packets per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.received.discarded.persec
+    metadata:
+      displayName: Traffic packets discarded/s
+      description: Network traffic discarded received packets per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.received.errors.persec
+    metadata:
+      displayName: Traffic packets error/s
+      description: Network traffic error received packets per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.received.unknown.persec
+    metadata:
+      displayName: Traffic packets unknown/s
+      description: Network traffic unknown received packets per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.packets.sent.persec
+    metadata:
+      displayName: Traffic packets sent/s
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.tcp.connections.active.count
+    metadata:
+      displayName: Active TCP connections
+      description: Number of active TCP connections
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.tcp.connections.established.count
+    metadata:
+      displayName: Established TCP connections
+      description: Number of established TCP connections
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.tcp.connections.failures.count
+    metadata:
+      displayName: Failed TCP connections
+      description: Number of failed TCP connections
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.tcp.connections.passive.count
+    metadata:
+      displayName: Passive TCP connections
+      description: Number of passive TCP connections
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.tcp.connections.resets.count
+    metadata:
+      displayName: TCP connection resets
+      description: Number of TCP connection resets
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.tcp.segments.persec
+    metadata:
+      displayName: TCP segments/s
+      description: Number of TCP segments per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.tcp.segments.received.persec
+    metadata:
+      displayName: TCP segments received/s
+      description: Number of received TCP segments per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec
+    metadata:
+      displayName: TCP segments sent/s
+      description: Number of sent TCP segments per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec
+    metadata:
+      displayName: TCP segments transmitted/s
+      description: Number of transmitted TCP segments per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.udp.datagrams.persec
+    metadata:
+      displayName: UDP datagrams/s
+      description: Number of UDP datagrams per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec
+    metadata:
+      displayName: UDP datagrams received/s
+      description: Number of received UDP datagrams per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count
+    metadata:
+      displayName: UDP Received invalid datagrams
+      description: Number of received invalid UDP datagrams
+      unit: Count
+  - key: com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec
+    metadata:
+      displayName: UDP datagrams sent/s
+      description: Number of sent UDP datagrams per second
+      unit: PerSecond
+
+wmi:
+  - group: Host
+    interval:
+       minutes: 1
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: CPU
+        query: SELECT Name, PercentProcessorTime, PercentIdleTime, PercentUserTime FROM Win32_PerfFormattedData_PerfOS_Processor WHERE Name LIKE '_Total'
+        metrics:
+          - key: com.dynatrace.extension.host-observability.host.cpu.time.processor
+            value: column:PercentProcessorTime
+          - key: com.dynatrace.extension.host-observability.host.cpu.time.idle
+            value: column:PercentIdleTime
+          - key: com.dynatrace.extension.host-observability.host.cpu.time.user
+            value: column:PercentUserTime
+        dimensions:
+          - key: host.cpu.id
+            value: column:Name
+      - subgroup: Memory
+        query: SELECT AvailableBytes, CommittedBytes, PercentCommittedBytesInUse, PoolNonpagedBytes, PoolPagedBytes, PageFaultsPersec FROM Win32_PerfFormattedData_PerfOS_Memory
+        metrics:
+          - key: com.dynatrace.extension.host-observability.host.memory.bytes.available
+            value: column:AvailableBytes
+          - key: com.dynatrace.extension.host-observability.host.memory.bytes.commited
+            value: column:CommittedBytes
+          - key: com.dynatrace.extension.host-observability.host.memory.bytes.commited.inuse
+            value: column:PercentCommittedBytesInUse
+          - key: com.dynatrace.extension.host-observability.host.memory.pool.nonpaged
+            value: column:PoolNonpagedBytes
+          - key: com.dynatrace.extension.host-observability.host.memory.pool.paged
+            value: column:PoolPagedBytes
+          - key: com.dynatrace.extension.host-observability.host.memory.pagefaults.persec
+            value: column:PageFaultsPersec
+      - subgroup: Swap
+        query: SELECT Name, AllocatedBaseSize, CurrentUsage, PeakUsage FROM Win32_PageFileUsage
+        metrics:
+          - key: com.dynatrace.extension.host-observability.host.swap.allocated
+            value: column:AllocatedBaseSize
+          - key: com.dynatrace.extension.host-observability.host.swap.current
+            value: column:CurrentUsage
+          - key: com.dynatrace.extension.host-observability.host.swap.peak
+            value: column:PeakUsage
+        dimensions:
+          - key: host.swap.filename
+            value: column:Name
+      - subgroup: System
+        query: SELECT Processes, Threads FROM Win32_PerfFormattedData_PerfOS_System
+        metrics:
+          - key: com.dynatrace.extension.host-observability.host.processes
+            value: column:Processes
+          - key: com.dynatrace.extension.host-observability.host.threads
+            value: column:Threads
+  - group: Disk
+    interval:
+       minutes: 1
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: Logical
+        query: SELECT Name, DiskBytesPersec, DiskReadBytesPersec, DiskReadsPersec, DiskWriteBytesPersec, DiskWritesPersec, DiskTransfersPersec, PercentDiskTime, PercentDiskReadTime, PercentDiskWriteTime, PercentIdleTime, AvgDiskBytesPerRead, AvgDiskBytesPerWrite, AvgDiskBytesPerTransfer, AvgDiskReadQueueLength, AvgDiskWriteQueueLength, FreeMegabytes, PercentFreeSpace FROM Win32_PerfFormattedData_PerfDisk_LogicalDisk WHERE Name LIKE '%'
+        metrics:
+        - key: com.dynatrace.extension.host-observability.disk.bytes.persec
+          value: column:DiskBytesPersec
+        - key: com.dynatrace.extension.host-observability.disk.bytes.read.persec
+          value: column:DiskReadBytesPersec
+        - key: com.dynatrace.extension.host-observability.disk.read.persec
+          value: column:DiskReadsPersec
+        - key: com.dynatrace.extension.host-observability.disk.bytes.write.persec
+          value: column:DiskWriteBytesPersec
+        - key: com.dynatrace.extension.host-observability.disk.write.persec
+          value: column:DiskWritesPersec
+        - key: com.dynatrace.extension.host-observability.disk.transfer.persec
+          value: column:DiskTransfersPersec
+        - key: com.dynatrace.extension.host-observability.disk.usage.percent
+          value: column:PercentDiskTime
+        - key: com.dynatrace.extension.host-observability.disk.usage.read.percent
+          value: column:PercentDiskReadTime
+        - key: com.dynatrace.extension.host-observability.disk.usage.write.percent
+          value: column:PercentDiskWriteTime
+        - key: com.dynatrace.extension.host-observability.disk.usage.idle.percent
+          value: column:PercentIdleTime
+        - key: com.dynatrace.extension.host-observability.disk.read.avg.bytes
+          value: column:AvgDiskBytesPerRead
+        - key: com.dynatrace.extension.host-observability.disk.write.avg.bytes
+          value: column:AvgDiskBytesPerWrite
+        - key: com.dynatrace.extension.host-observability.disk.transfer.avg.bytes
+          value: column:AvgDiskBytesPerTransfer
+        - key: com.dynatrace.extension.host-observability.disk.queue.avg.read
+          value: column:AvgDiskReadQueueLength
+        - key: com.dynatrace.extension.host-observability.disk.queue.avg.write
+          value: column:AvgDiskWriteQueueLength
+        - key: com.dynatrace.extension.host-observability.disk.logical.free.megabytes
+          value: column:FreeMegabytes
+        - key: com.dynatrace.extension.host-observability.disk.logical.free.percent
+          value: column:PercentFreeSpace
+        dimensions:
+          - key: disk.type
+            value: const:Logical
+          - key: disk.name
+            value: column:Name
+      - subgroup: Physical
+        query: SELECT Name, DiskBytesPersec, DiskReadBytesPersec, DiskReadsPersec, DiskWriteBytesPersec, DiskWritesPersec, DiskTransfersPersec, PercentDiskTime, PercentDiskReadTime, PercentDiskWriteTime, PercentIdleTime, AvgDiskBytesPerRead, AvgDiskBytesPerWrite, AvgDiskBytesPerTransfer, AvgDiskReadQueueLength, AvgDiskWriteQueueLength FROM Win32_PerfFormattedData_PerfDisk_PhysicalDisk WHERE Name LIKE '%'
+        featureSet: physicalDisks
+        metrics:
+          - key: com.dynatrace.extension.host-observability.disk.bytes.persec
+            value: column:DiskBytesPersec
+          - key: com.dynatrace.extension.host-observability.disk.bytes.read.persec
+            value: column:DiskReadBytesPersec
+          - key: com.dynatrace.extension.host-observability.disk.read.persec
+            value: column:DiskReadsPersec
+          - key: com.dynatrace.extension.host-observability.disk.bytes.write.persec
+            value: column:DiskWriteBytesPersec
+          - key: com.dynatrace.extension.host-observability.disk.write.persec
+            value: column:DiskWritesPersec
+          - key: com.dynatrace.extension.host-observability.disk.transfer.persec
+            value: column:DiskTransfersPersec
+          - key: com.dynatrace.extension.host-observability.disk.usage.percent
+            value: column:PercentDiskTime
+          - key: com.dynatrace.extension.host-observability.disk.usage.read.percent
+            value: column:PercentDiskReadTime
+          - key: com.dynatrace.extension.host-observability.disk.usage.write.percent
+            value: column:PercentDiskWriteTime
+          - key: com.dynatrace.extension.host-observability.disk.usage.idle.percent
+            value: column:PercentIdleTime
+          - key: com.dynatrace.extension.host-observability.disk.read.avg.bytes
+            value: column:AvgDiskBytesPerRead
+          - key: com.dynatrace.extension.host-observability.disk.write.avg.bytes
+            value: column:AvgDiskBytesPerWrite
+          - key: com.dynatrace.extension.host-observability.disk.transfer.avg.bytes
+            value: column:AvgDiskBytesPerTransfer
+          - key: com.dynatrace.extension.host-observability.disk.queue.avg.read
+            value: column:AvgDiskReadQueueLength
+          - key: com.dynatrace.extension.host-observability.disk.queue.avg.write
+            value: column:AvgDiskWriteQueueLength
+        dimensions:
+          - key: disk.type
+            value: const:Physical
+          - key: disk.name
+            value: column:Name
+  - group: Network
+    interval:
+       minutes: 1
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: Adapters
+        query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec, PacketsPersec, PacketsReceivedPersec, PacketsReceivedDiscarded, PacketsReceivedErrors, PacketsReceivedUnknown, PacketsSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkAdapter
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.bytes.persec
+            value: column:BytesTotalPersec
+          - key: com.dynatrace.extension.host-observability.network.bytes.received.persec
+            value: column:BytesReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.bytes.sent.persec
+            value: column:BytesSentPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.persec
+            value: column:PacketsPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.received.persec
+            value: column:PacketsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.received.discarded.persec
+            value: column:PacketsReceivedDiscarded
+          - key: com.dynatrace.extension.host-observability.network.packets.received.errors.persec
+            value: column:PacketsReceivedErrors
+          - key: com.dynatrace.extension.host-observability.network.packets.received.unknown.persec
+            value: column:PacketsReceivedUnknown
+          - key: com.dynatrace.extension.host-observability.network.packets.sent.persec
+            value: column:PacketsSentPersec
+        dimensions:
+          - key: network.type
+            value: const:Adapter
+          - key: network.name
+            value: column:Name
+      - subgroup: Interfaces
+        query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec, PacketsPersec, PacketsReceivedPersec, PacketsReceivedDiscarded, PacketsReceivedErrors, PacketsReceivedUnknown, PacketsSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkInterface
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.bytes.persec
+            value: column:BytesTotalPersec
+          - key: com.dynatrace.extension.host-observability.network.bytes.received.persec
+            value: column:BytesReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.bytes.sent.persec
+            value: column:BytesSentPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.persec
+            value: column:PacketsPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.received.persec
+            value: column:PacketsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.packets.received.discarded.persec
+            value: column:PacketsReceivedDiscarded
+          - key: com.dynatrace.extension.host-observability.network.packets.received.errors.persec
+            value: column:PacketsReceivedErrors
+          - key: com.dynatrace.extension.host-observability.network.packets.received.unknown.persec
+            value: column:PacketsReceivedUnknown
+          - key: com.dynatrace.extension.host-observability.network.packets.sent.persec
+            value: column:PacketsSentPersec
+        dimensions:
+          - key: network.type
+            value: const:Interface
+          - key: network.name
+            value: column:Name
+  - group: Network_TCP
+    interval:
+       minutes: 1
+    featureSet: tcp
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: TCPv4
+        query: SELECT ConnectionsActive, ConnectionsEstablished, ConnectionFailures, ConnectionsPassive, ConnectionsReset, SegmentsPersec, SegmentsReceivedPersec, SegmentsSentPersec, SegmentsRetransmittedPersec FROM Win32_PerfFormattedData_Tcpip_TCPv4
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.active
+            value: column:ConnectionsActive
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.established
+            value: column:ConnectionsEstablished
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.failures
+            value: column:ConnectionFailures
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.passive
+            value: column:ConnectionsPassive
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.resets
+            value: column:ConnectionsReset
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.persec
+            value: column:SegmentsPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.received.persec
+            value: column:SegmentsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec
+            value: column:SegmentsSentPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec
+            value: column:SegmentsRetransmittedPersec
+        dimensions:
+          - key: network.tcp.version
+            value: const:ipv4
+      - subgroup: TCPv6
+        query: SELECT ConnectionsActive, ConnectionsEstablished, ConnectionFailures, ConnectionsPassive, ConnectionsReset, SegmentsPersec, SegmentsReceivedPersec, SegmentsSentPersec, SegmentsRetransmittedPersec FROM Win32_PerfFormattedData_Tcpip_TCPv6
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.active
+            value: column:ConnectionsActive
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.established
+            value: column:ConnectionsEstablished
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.failures
+            value: column:ConnectionFailures
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.passive
+            value: column:ConnectionsPassive
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.connections.resets
+            value: column:ConnectionsReset
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.persec
+            value: column:SegmentsPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.received.persec
+            value: column:SegmentsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec
+            value: column:SegmentsSentPersec
+          - key: com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec
+            value: column:SegmentsRetransmittedPersec
+        dimensions:
+          - key: network.tcp.version
+            value: const:ipv6
+  - group: Network_UDP
+    featureSet: udp
+    dimensions:
+      - key: host
+        value: this:device.host
+    interval:
+       minutes: 1
+    subgroups:
+      - subgroup: UDPv4
+        query: SELECT DatagramsPersec, DatagramsReceivedPersec, DatagramsReceivedErrors, DatagramsSentPersec FROM Win32_PerfFormattedData_Tcpip_UDPv4
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.persec
+            value: column:DatagramsPersec
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec
+            value: column:DatagramsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors
+            value: column:DatagramsReceivedErrors
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec
+            value: column:DatagramsSentPersec
+        dimensions:
+          - key: network.udp.version
+            value: const:ipv4
+      - subgroup: UDPv6
+        query: SELECT DatagramsPersec, DatagramsReceivedPersec, DatagramsReceivedErrors, DatagramsSentPersec FROM Win32_PerfFormattedData_Tcpip_UDPv6
+        metrics:
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.persec
+            value: column:DatagramsPersec
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec
+            value: column:DatagramsReceivedPersec
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors
+            value: column:DatagramsReceivedErrors
+            type: count
+          - key: com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec
+            value: column:DatagramsSentPersec
+        dimensions:
+          - key: network.udp.version
+            value: const:ipv6
+dashboards:
+  - path: "dashboards/wmi_host.json"
+alerts:
+  - path: "alerts/host_high_cpu.json"
+  - path: "alerts/host_low_memory.json"
+  - path: "alerts/host_high_pagefaults.json"
+  - path: "alerts/disk_low_free_space.json"
+  - path: "alerts/network_high_packets_errors.json"
+  - path: "alerts/network_high_packets_discarded.json"
+
+topology:
+  types:
+    - name: wmi:com_dynatrace_extension_host-observability_instance
+      displayName: Host
+      enabled: true
+      rules:
+        - idPattern: wmi_host-observability_{dt.entity.host}
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(com.dynatrace.extension.host-observability)
+          attributes: []
+          requiredDimensions: []
+          instanceNamePattern: Host on {dt.entity.host}
+        - idPattern: wmi_host-observability_{host}
+          sources:
+          - sourceType: Metrics
+            condition: $prefix(com.dynatrace.extension.host-observability)
+          attributes: []
+          requiredDimensions: []
+          instanceNamePattern: Host on {host}
+    - name: wmi:com_dynatrace_extension_host-observability_disk
+      displayName: Disk
+      enabled: true
+      rules:
+        - idPattern: wmi_host-observability_{dt.entity.host}_{disk.type}_{disk.name}
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(com.dynatrace.extension.host-observability.disk)
+          attributes:
+            - pattern: '{disk.name}'
+              key: wmi_disk_name
+              displayName: Name
+            - pattern: '{disk.type}'
+              key: wmi_disk_type
+              displayName: Type
+          requiredDimensions: []
+          instanceNamePattern: Disk {disk.type} {disk.name} on {dt.entity.host}
+        - idPattern: wmi_host-observability_{host}_{disk.type}_{disk.name}
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(com.dynatrace.extension.host-observability.disk)
+          attributes:
+            - pattern: '{disk.name}'
+              key: wmi_disk_name
+              displayName: Name
+            - pattern: '{disk.type}'
+              key: wmi_disk_type
+              displayName: Type
+          requiredDimensions: []
+          instanceNamePattern: Disk {disk.type} {disk.name} on {host}
+    - name: wmi:com_dynatrace_extension_host-observability_network_device
+      displayName: Network device
+      enabled: true
+      rules:
+        - idPattern: wmi_host-observability_{dt.entity.host}_{network.type}_{network.name}
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(com.dynatrace.extension.host-observability.network)
+          attributes:
+            - pattern: '{network.name}'
+              key: wmi_network_name
+              displayName: Name
+            - pattern: '{network.type}'
+              key: wmi_network_type
+              displayName: Type
+          requiredDimensions: []
+          instanceNamePattern: Network {network.type} {network.name} on {dt.entity.host}
+        - idPattern: wmi_host-observability_{host}_{network.type}_{network.name}
+          sources:
+            - sourceType: Metrics
+              condition: $prefix(com.dynatrace.extension.host-observability.network)
+          attributes:
+            - pattern: '{network.name}'
+              key: wmi_network_name
+              displayName: Name
+            - pattern: '{network.type}'
+              key: wmi_network_type
+              displayName: Type
+          requiredDimensions: []
+          instanceNamePattern: Network {network.type} {network.name} on {host}
+  relationships:
+    - typeOfRelation: CHILD_OF
+      fromType: wmi:com_dynatrace_extension_host-observability_disk
+      toType: wmi:com_dynatrace_extension_host-observability_instance
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.host-observability)
+    - typeOfRelation: CHILD_OF
+      fromType: wmi:com_dynatrace_extension_host-observability_network_device
+      toType: wmi:com_dynatrace_extension_host-observability_instance
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.host-observability)
+
+screens:
+  - entityType: wmi:com_dynatrace_extension_host-observability_disk
+    propertiesCard:
+      properties:
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_disk_name
+            displayName: Name
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_disk_type
+            displayName: Type
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(wmi:com_dynatrace_extension_host-observability_instance), toRelationships.isChildOf($(entityConditions))
+            displayName: Host
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+          - type: "CHART_GROUP"
+            key: "wmi_disk_usage"
+          - type: "CHART_GROUP"
+            key: "wmi_disk_operations"
+          - type: "CHART_GROUP"
+            key: "wmi_disk_queues"
+    chartsCards:
+    - key: "wmi_disk_usage"
+      displayName: "Disk usage"
+      numberOfVisibleCharts: 2
+      charts:
+        - displayName: "Usage %"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.idle.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.write.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.read.percent:splitBy()"
+        - displayName: "Bytes"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: AREA
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.read.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.write.persec:splitBy()"
+    - key: "wmi_disk_operations"
+      displayName: "Disk operations"
+      numberOfVisibleCharts: 2
+      charts:
+        - displayName: "Operations"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.read.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.write.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.transfer.persec:splitBy()"
+        - displayName: "Average bytes usage"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: AREA
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.read.avg.bytes:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.write.avg.bytes:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.transfer.avg.bytes:splitBy()"
+    - key: "wmi_disk_queues"
+      displayName: "Disk queues"
+      numberOfVisibleCharts: 1
+      charts:
+        - displayName: "Queues length"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.queue.avg.read:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.queue.avg.write:splitBy()"
+  - entityType: wmi:com_dynatrace_extension_host-observability_network_device
+    propertiesCard:
+      properties:
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_network_name
+            displayName: Name
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_network_type
+            displayName: Type
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(wmi:com_dynatrace_extension_host-observability_instance), toRelationships.isChildOf($(entityConditions))
+            displayName: Host
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+        - type: "CHART_GROUP"
+          key: "wmi_network_traffic"
+    chartsCards:
+      - key: "wmi_network_traffic"
+        displayName: "Traffic"
+        numberOfVisibleCharts: 3
+        charts:
+          - displayName: "Bytes"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.received.persec:splitBy()"
+          - displayName: "Packets"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.persec:splitBy()"
+          - displayName: "Packet errors"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.errors.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.discarded.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.unknown.persec:splitBy()"
+  - entityType: wmi:com_dynatrace_extension_host-observability_instance
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+          - type: "CHART_GROUP"
+            key: "wmi_host_system"
+          - type: "CHART_GROUP"
+            key: "wmi_host_memory"
+          - type: "CHART_GROUP"
+            key: "wmi_host_logical_disks_total"
+          - type: "ENTITIES_LIST"
+            key: "wmi_host_logical_disks"
+          - type: "CHART_GROUP"
+            key: "wmi_host_physical_disks_total"
+          - type: "ENTITIES_LIST"
+            key: "wmi_host_physical_disks"
+          - type: "CHART_GROUP"
+            key: "wmi_host_network"
+          - type: "ENTITIES_LIST"
+            key: "wmi_host_network_interfaces"
+          - type: "ENTITIES_LIST"
+            key: "wmi_host_network_adapters"
+    chartsCards:
+    - key: "wmi_host_system"
+      displayName: "System"
+      numberOfVisibleCharts: 3
+      charts:
+        - displayName: "CPU usage"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.cpu.time.idle:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.cpu.time.user:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.cpu.time.processor:splitBy()"
+        - displayName: "Processes"
+          visualization:
+            themeColor: PURPLE
+            seriesType: COLUMN
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.processes:splitBy()"
+        - displayName: "Threads"
+          visualization:
+            themeColor: BLUE
+            seriesType: COLUMN
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.threads:splitBy()"
+    - key: "wmi_host_memory"
+      displayName: "Memory"
+      numberOfVisibleCharts: 2
+      charts:
+        - displayName: "Memory bytes usage"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.bytes.available:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.bytes.commited:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.bytes.commited.inuse:splitBy()"
+        - displayName: "Memory pool"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.pool.nonpaged:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.pool.paged:splitBy()"
+        - displayName: "Pagefaults"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: COLUMN
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.memory.pagefaults.persec:splitBy()"
+        - displayName: "Swap"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.host.swap.allocated:splitBy(\"host.swap.filename\")"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.swap.current:splitBy(\"host.swap.filename\")"
+            - metricSelector: "com.dynatrace.extension.host-observability.host.swap.peak:splitBy(\"host.swap.filename\")"
+    - key: "wmi_host_network"
+      displayName: "Network Traffic"
+      numberOfVisibleCharts: 2
+      charts:
+        - displayName: "TCP Segments"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.received.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec:splitBy()"
+        - displayName: "TCP Connections"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.active.count:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.established.count:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.failures.count:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.passive.count:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.resets.count:splitBy()"
+        - displayName: "TCPv4 Segments"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.persec:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.received.persec:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+        - displayName: "TCPv4 Connections"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.active.count:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.established.count:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.failures.count:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.passive.count:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.resets.count:filter(and(eq(\"network.tcp.version\",ipv4))):splitBy()"
+        - displayName: "TCPv6 Segments"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.persec:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.received.persec:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+        - displayName: "TCPv6 Connections"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.active.count:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.established.count:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.failures.count:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.passive.count:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.tcp.connections.resets.count:filter(and(eq(\"network.tcp.version\",ipv6))):splitBy()"
+        - displayName: "UDP Datagrams"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec:splitBy()"
+        - displayName: "UDPv4 Datagrams"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.persec:filter(and(eq(\"network.udp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec:filter(and(eq(\"network.udp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count:filter(and(eq(\"network.udp.version\",ipv4))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec:filter(and(eq(\"network.udp.version\",ipv4))):splitBy()"
+        - displayName: "UDPv6 Datagrams"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.persec:filter(and(eq(\"network.udp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec:filter(and(eq(\"network.udp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count:filter(and(eq(\"network.udp.version\",ipv6))):splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec:filter(and(eq(\"network.udp.version\",ipv6))):splitBy()"
+    - key: "wmi_host_logical_disks_total"
+      displayName: "Total logical disks usage"
+      numberOfVisibleCharts: 2
+      entitySelectorTemplate: type(wmi:com_dynatrace_extension_host-observability_disk), fromRelationships.isChildOf($(entityConditions)), wmi_disk_type(Logical), wmi_disk_name(_Total)
+      charts:
+        - displayName: "Usage %"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.idle.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.write.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.read.percent:splitBy()"
+        - displayName: "Bytes"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: AREA
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.read.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.write.persec:splitBy()"
+    - key: "wmi_host_physical_disks_total"
+      displayName: "Total physical disks usage"
+      numberOfVisibleCharts: 2
+      entitySelectorTemplate: type(wmi:com_dynatrace_extension_host-observability_disk), fromRelationships.isChildOf($(entityConditions)), wmi_disk_type(Physical), wmi_disk_name(_Total)
+      charts:
+        - displayName: "Usage %"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: LINE
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.idle.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.write.percent:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.usage.read.percent:splitBy()"
+        - displayName: "Bytes"
+          visualization:
+            themeColor: DEFAULT
+            seriesType: AREA
+          metrics:
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.read.persec:splitBy()"
+            - metricSelector: "com.dynatrace.extension.host-observability.disk.bytes.write.persec:splitBy()"
+    entitiesListCards:
+      - key: "wmi_host_logical_disks"
+        displayName: "Logical Disks"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_disk), fromRelationships.isChildOf($(entityConditions)), wmi_disk_type(Logical), not(wmi_disk_name(_Total))"
+        pageSize: 5
+        displayCharts: true
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Operations"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.read.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.write.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.transfer.persec:splitBy()"
+      - key: "wmi_host_physical_disks"
+        displayName: "Physical Disks"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_disk), fromRelationships.isChildOf($(entityConditions)), wmi_disk_type(Physical), not(wmi_disk_name(_Total))"
+        pageSize: 5
+        displayCharts: true
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Operations"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.read.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.write.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.disk.transfer.persec:splitBy()"
+      - key: "wmi_host_network_interfaces"
+        displayName: "Network Interfaces"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_network_device), fromRelationships.isChildOf($(entityConditions)), wmi_network_type(Interface)"
+        pageSize: 5
+        displayCharts: false
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Traffic"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.received.persec:splitBy()"
+      - key: "wmi_host_network_adapters"
+        displayName: "Network Adapters"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_network_device), fromRelationships.isChildOf($(entityConditions)), wmi_network_type(Adapter)"
+        pageSize: 5
+        displayCharts: false
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Traffic"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.received.persec:splitBy()"

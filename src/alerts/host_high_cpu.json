@@ -1,0 +1,19 @@
+{
+    "metricId": "com.dynatrace.extension.host-observability.host.cpu.time.processor",
+    "name": "HostObservability CPU Usage",
+    "description": "High CPU usage",
+    "aggregationType": "AVG",
+    "severity": "CUSTOM_ALERT",
+    "enabled": true,
+    "monitoringStrategy": {
+        "type": "STATIC_THRESHOLD",
+        "samples": 5,
+        "violatingSamples": 3,
+        "dealertingSamples": 3,
+        "alertCondition": "ABOVE",
+        "threshold": 90.0,
+        "alertingOnMissingData": false,
+        "unit": "PERCENT"
+    },
+    "eventType": "CUSTOM_ALERT"
+}

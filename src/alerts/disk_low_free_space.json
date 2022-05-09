@@ -1,0 +1,19 @@
+{
+    "metricId": "com.dynatrace.extension.host-observability.disk.logical.free.percent",
+    "name": "HostObservability Disk Free Space",
+    "description": "Low disk free space",
+    "aggregationType": "AVG",
+    "severity": "CUSTOM_ALERT",
+    "enabled": true,
+    "monitoringStrategy": {
+        "type": "STATIC_THRESHOLD",
+        "samples": 5,
+        "violatingSamples": 3,
+        "dealertingSamples": 3,
+        "alertCondition": "BELOW",
+        "threshold": 10.0,
+        "alertingOnMissingData": false,
+        "unit": "PERCENT"
+    },
+    "eventType": "CUSTOM_ALERT"
+}

@@ -1,0 +1,2674 @@
+{
+    "metadata": {
+        "configurationVersions": [
+            5
+        ],
+        "clusterVersion": "1.223.0.20210707-083813"
+    },
+    "id": "97df7ce6-8e72-4f4a-a4f8-4f0d3e6f5853",
+    "dashboardMetadata": {
+        "name": "WMI Host Monitoring",
+        "shared": false,
+        "owner": "Dynatrace"
+    },
+    "tiles": [
+        {
+            "name": "CPU",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 760,
+                "left": 0,
+                "width": 1368,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.host.cpu.time.processor",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.cpu.time.processor:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.host.cpu.time.idle",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.cpu.time.idle:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.host.cpu.time.user",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.cpu.time.user:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Memory",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 1064,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "CPU",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 722,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "Available memory",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1102,
+                "left": 0,
+                "width": 1368,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.host.memory.bytes.available",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.bytes.available:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.host.memory.bytes.commited",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.bytes.commited:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.host.memory.pool.paged",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.pool.paged:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.host.memory.pool.nonpaged",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.pool.nonpaged:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Page faults",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1368,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.host.memory.pagefaults.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.pagefaults.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.host.swap.allocated",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.swap.allocated:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.host.swap.current",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.swap.current:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    },
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "System",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 380,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "Logical Disks",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 1672,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "Swap",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1368,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.host.swap.allocated",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.swap.allocated:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.host.swap.current",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.swap.current:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.host.swap.peak",
+                    "spaceAggregation": "MAX",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.swap.peak:splitBy(host):max:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Queues",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2280,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.queue.avg.read",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.queue.avg.read:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.disk.queue.avg.write",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.queue.avg.write:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Disk usage",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 1710,
+                "left": 0,
+                "width": 1368,
+                "height": 304
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.persec:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.read.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.read.persec:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.write.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.write.persec:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Disk avarage usage",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2280,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.read.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.read.avg.bytes:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.disk.write.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.write.avg.bytes:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.disk.transfer.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.transfer.avg.bytes:filter(and(eq(disk.type,Logical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Physical Disks",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 2584,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "Disk usage",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2622,
+                "left": 0,
+                "width": 1368,
+                "height": 304
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.persec:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.read.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.read.persec:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.bytes.write.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.bytes.write.persec:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Disk usage %",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2926,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.percent:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.read.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.read.percent:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.write.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.write.percent:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.idle.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.idle.percent:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Disk avarage usage",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 3192,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.read.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.read.avg.bytes:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.disk.write.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.write.avg.bytes:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.disk.transfer.avg.bytes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.transfer.avg.bytes:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Queues",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 3192,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.queue.avg.read",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.queue.avg.read:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.disk.queue.avg.write",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "disk.name"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.queue.avg.write:filter(and(eq(disk.type,Physical))):splitBy(host,disk.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Processes",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 418,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.host.processes",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.processes:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "I/O Operations",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2926,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.read.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.read.persec:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.write.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.write.persec:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.transfer.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Physical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.transfer.persec:filter(and(eq(disk.type,Physical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "I/O Operations",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2014,
+                "left": 0,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.read.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.read.persec:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.write.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.write.persec:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.transfer.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.transfer.persec:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Network",
+            "tileType": "HEADER",
+            "configured": true,
+            "bounds": {
+                "top": 3496,
+                "left": 0,
+                "width": 1368,
+                "height": 38
+            },
+            "tileFilter": {}
+        },
+        {
+            "name": "Traffic",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 3534,
+                "left": 0,
+                "width": 1368,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.network.bytes.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "network.name"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.bytes.persec:splitBy(host,network.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.network.bytes.received.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "network.name"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.bytes.received.persec:splitBy(host,network.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "G",
+                    "metric": "com.dynatrace.extension.host-observability.network.bytes.sent.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance",
+                        "network.name"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.bytes.sent.persec:splitBy(host,network.name):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "E:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "F:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Packets",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 3876,
+                "left": 0,
+                "width": 684,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.network.packets.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.packets.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.network.packets.received.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.packets.received.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "G",
+                    "metric": "com.dynatrace.extension.host-observability.network.packets.received.discarded.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.packets.received.discarded.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "H",
+                    "metric": "com.dynatrace.extension.host-observability.network.packets.received.errors.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.packets.received.errors.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "I",
+                    "metric": "com.dynatrace.extension.host-observability.network.packets.sent.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.packets.sent.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "E:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "F:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "G:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "H:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "TCP Connections",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 3876,
+                "left": 684,
+                "width": 684,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.connections.active.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.connections.active.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.connections.established.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.connections.established.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "G",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.connections.failures.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.connections.failures.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "H",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.connections.passive.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.connections.passive.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "I",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.connections.resets.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.connections.resets.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "E:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "F:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "G:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "H:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "TCP Packets",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 4218,
+                "left": 684,
+                "width": 684,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "E",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.segments.received.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.segments.received.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "F",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.segments.sent.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "G",
+                    "metric": "com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.tcp.segments.transmitted.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "E:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "F:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "UDP Datagrams",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 4218,
+                "left": 0,
+                "width": 684,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.network.udp.datagrams.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.udp.datagrams.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.udp.datagrams.received.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.udp.datagrams.received.errors.count:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.network.udp.datagrams.sent.persec:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "LINE"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Threads",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 418,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.host.threads",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.threads:splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "BLUE",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "COLUMN"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Disk usage %",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 2014,
+                "left": 684,
+                "width": 684,
+                "height": 266
+            },
+            "tileFilter": {},
+            "customName": "Explorer results",
+            "queries": [
+                {
+                    "id": "A",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.percent:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.read.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.read.percent:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "C",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.write.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.write.percent:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                },
+                {
+                    "id": "D",
+                    "metric": "com.dynatrace.extension.host-observability.disk.usage.idle.percent",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "splitBy": [
+                        "dt.entity.wmi:com_dynatrace_extension_host-observability_instance"
+                    ],
+                    "filterBy": {
+                        "filterOperator": "AND",
+                        "nestedFilters": [
+                            {
+                                "filter": "disk.type",
+                                "filterType": "DIMENSION",
+                                "filterOperator": "OR",
+                                "nestedFilters": [],
+                                "criteria": [
+                                    {
+                                        "value": "Logical",
+                                        "evaluator": "EQ"
+                                    }
+                                ]
+                            }
+                        ],
+                        "criteria": []
+                    },
+                    "metricSelector": "com.dynatrace.extension.host-observability.disk.usage.idle.percent:filter(and(eq(disk.type,Logical))):splitBy(host):avg:auto:sort(value(avg,descending)):limit(20)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "GRAPH_CHART",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [
+                    {
+                        "matcher": "A:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "B:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "C:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    },
+                    {
+                        "matcher": "D:",
+                        "properties": {
+                            "seriesType": "AREA"
+                        }
+                    }
+                ],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        },
+        {
+            "name": "Instances",
+            "tileType": "DATA_EXPLORER",
+            "configured": true,
+            "bounds": {
+                "top": 0,
+                "left": 0,
+                "width": 684,
+                "height": 342
+            },
+            "tileFilter": {},
+            "customName": "Instances",
+            "queries": [
+                {
+                    "id": "A",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.cpu.time.processor:splitBy(\"dt.entity.wmi:com_dynatrace_extension_host-observability_instance\"):avg:auto:sort(value(avg,descending)):limit(10)",
+                    "enabled": true
+                },
+                {
+                    "id": "B",
+                    "spaceAggregation": "AVG",
+                    "timeAggregation": "DEFAULT",
+                    "metricSelector": "com.dynatrace.extension.host-observability.host.memory.bytes.available:splitBy(\"dt.entity.wmi:com_dynatrace_extension_host-observability_instance\"):avg:auto:sort(value(avg,descending)):limit(10)",
+                    "enabled": true
+                }
+            ],
+            "visualConfig": {
+                "type": "TABLE",
+                "global": {
+                    "theme": "DEFAULT",
+                    "threshold": {
+                        "axisTarget": "LEFT",
+                        "columnId": "Percent of used processor time",
+                        "rules": [
+                            {
+                                "color": "#7dc540"
+                            },
+                            {
+                                "color": "#f5d30f"
+                            },
+                            {
+                                "color": "#dc172a"
+                            }
+                        ]
+                    },
+                    "seriesType": "LINE"
+                },
+                "rules": [],
+                "axes": {
+                    "xAxis": {
+                        "visible": true
+                    },
+                    "yAxes": []
+                }
+            }
+        }
+    ]
+}
