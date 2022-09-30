@@ -1,9 +1,8 @@
 name: com.dynatrace.extension.host-observability
-version: 1.1.4
-minDynatraceVersion: "1.227"
+version: 1.2.4
+minDynatraceVersion: "1.233"
 author:
   name: Dynatrace
-
 metrics:
   - key: com.dynatrace.extension.host-observability.host.cpu.time.processor
     metadata:
@@ -33,34 +32,6 @@ metrics:
       displayName: Used commited memory
       description: Percentage of using commited memory
       unit: Percent
-  - key: com.dynatrace.extension.host-observability.host.memory.pool.nonpaged
-    metadata:
-      displayName: Non-paged memory size
-      unit: Byte
-  - key: com.dynatrace.extension.host-observability.host.memory.pool.paged
-    metadata:
-      displayName: Paged memory size
-      unit: Byte
-  - key: com.dynatrace.extension.host-observability.host.memory.pagefaults.persec
-    metadata:
-      displayName: Page faults/s
-      description: Number of page faults per second
-      unit: Count
-  - key: com.dynatrace.extension.host-observability.host.swap.allocated
-    metadata:
-      displayName: Allocated swap memory
-      description: Allocated bytes for swap memory
-      unit: Byte
-  - key: com.dynatrace.extension.host-observability.host.swap.current
-    metadata:
-      displayName: Used swap memory
-      description: Bytes of current used swap memory
-      unit: Byte
-  - key: com.dynatrace.extension.host-observability.host.swap.peak
-    metadata:
-      displayName: Swap memory peak
-      description: Bytes of peak usage of swap memory
-      unit: Byte
   - key: com.dynatrace.extension.host-observability.host.processes
     metadata:
       displayName: Processes
@@ -265,6 +236,48 @@ metrics:
       displayName: UDP datagrams sent/s
       description: Number of sent UDP datagrams per second
       unit: PerSecond
+  # Page / Swap Metrics
+  # PerfOS_Memory
+  - key: com.dynatrace.extension.host-observability.host.memory.pool.nonpaged
+    metadata:
+      displayName: Non-paged memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.pool.paged
+    metadata:
+      displayName: Paged memory size
+      unit: Byte
+  - key: com.dynatrace.extension.host-observability.host.memory.pagefaults.persec
+    metadata:
+      displayName: Page faults per second
+      description: Number of page faults per second
+      unit: PerSecond
+  # Win32_PageFileUsage
+  - key: com.dynatrace.extension.host-observability.host.swap.allocated
+    metadata:
+      displayName: Allocated for swap memory
+      description: Allocated disk space for swap memory
+      unit: MegaByte
+  # - key: com.dynatrace.extension.host-observability.host.swap.current
+  #   metadata:
+  #     displayName: Current swap memory used
+  #     description: Current disk space used by swap memory
+  #     unit: MegaByte
+  - key: com.dynatrace.extension.host-observability.host.swap.peak
+    metadata:
+      displayName: Swap memory used
+      description: Disk space used by swap memory
+      unit: MegaByte
+  # Win32_OperatingSystem
+  - key: com.dynatrace.extension.host-observability.host.swap.total
+    metadata:
+      displayName: Total swap memory
+      description: Total kilobytes that can be stored in the operating system paging files
+      unit: KiloByte
+  - key: com.dynatrace.extension.host-observability.host.swap.available
+    metadata:
+      displayName: Available swap memory
+      description: Number, in kilobytes, that can be mapped into the paging files without causing any other pages to be swapped out
+      unit: KiloByte
 
 wmi:
   - group: Host
@@ -287,7 +300,7 @@ wmi:
           - key: host.cpu.id
             value: column:Name
       - subgroup: Memory
-        query: SELECT AvailableBytes, CommittedBytes, PercentCommittedBytesInUse, PoolNonpagedBytes, PoolPagedBytes, PageFaultsPersec FROM Win32_PerfFormattedData_PerfOS_Memory
+        query: SELECT AvailableBytes, CommittedBytes, PercentCommittedBytesInUse  FROM Win32_PerfFormattedData_PerfOS_Memory
         metrics:
           - key: com.dynatrace.extension.host-observability.host.memory.bytes.available
             value: column:AvailableBytes
@@ -295,13 +308,25 @@ wmi:
             value: column:CommittedBytes
           - key: com.dynatrace.extension.host-observability.host.memory.bytes.commited.inuse
             value: column:PercentCommittedBytesInUse
+      - subgroup: System
+        query: SELECT Processes, Threads FROM Win32_PerfFormattedData_PerfOS_System
+        metrics:
+          - key: com.dynatrace.extension.host-observability.host.processes
+            value: column:Processes
+          - key: com.dynatrace.extension.host-observability.host.threads
+            value: column:Threads
+      - subgroup: PerfOS_Memory
+        featureSet: PagerfileMetrics
+        query: SELECT AvailableBytes, CommittedBytes, PercentCommittedBytesInUse, PoolNonpagedBytes, PoolPagedBytes, PageFaultsPersec FROM Win32_PerfFormattedData_PerfOS_Memory
+        metrics:
           - key: com.dynatrace.extension.host-observability.host.memory.pool.nonpaged
             value: column:PoolNonpagedBytes
           - key: com.dynatrace.extension.host-observability.host.memory.pool.paged
             value: column:PoolPagedBytes
           - key: com.dynatrace.extension.host-observability.host.memory.pagefaults.persec
             value: column:PageFaultsPersec
-      - subgroup: Swap
+      - subgroup: PageFileUsage
+        featureSet: PagerfileMetrics
         query: SELECT Name, AllocatedBaseSize, CurrentUsage, PeakUsage FROM Win32_PageFileUsage
         metrics:
           - key: com.dynatrace.extension.host-observability.host.swap.allocated
@@ -313,13 +338,15 @@ wmi:
         dimensions:
           - key: host.swap.filename
             value: column:Name
-      - subgroup: System
-        query: SELECT Processes, Threads FROM Win32_PerfFormattedData_PerfOS_System
-        metrics:
-          - key: com.dynatrace.extension.host-observability.host.processes
-            value: column:Processes
-          - key: com.dynatrace.extension.host-observability.host.threads
-            value: column:Threads
+      - subgroup: Page_Win32_OperatingSystem
+        featureSet: PagerfileMetrics
+        query: SELECT FreeSpaceInPagingFiles, FreeVirtualMemory, SizeStoredInPagingFiles, TotalSwapSpaceSize, TotalVirtualMemorySize, TotalVisibleMemorySize FROM Win32_OperatingSystem
+        metrics: 
+          - key: com.dynatrace.extension.host-observability.host.swap.total
+            value: column:sizeStoredInPagingFiles
+          - key: com.dynatrace.extension.host-observability.host.swap.available
+            value: column:FreeSpaceInPagingFiles
+
   - group: Disk
     interval:
        minutes: 1
@@ -584,23 +611,31 @@ alerts:
 topology:
   types:
     - name: wmi:com_dynatrace_extension_host-observability_instance
-      displayName: Host
+      displayName: Remote Host
       enabled: true
       rules:
         - idPattern: wmi_host-observability_{dt.entity.host}
           sources:
             - sourceType: Metrics
               condition: $prefix(com.dynatrace.extension.host-observability)
-          attributes: []
-          requiredDimensions: []
-          instanceNamePattern: Host on {dt.entity.host}
+          attributes:
+            - pattern: '{host.name}'
+              key: wmi_instance_name
+              displayName: Host name
+          requiredDimensions:
+            - key: device.name
+              valuePattern: $eq(localhost)
+          instanceNamePattern: "{host.name} (Remote)"
+          iconPattern: host
         - idPattern: wmi_host-observability_{host}
           sources:
           - sourceType: Metrics
             condition: $prefix(com.dynatrace.extension.host-observability)
           attributes: []
           requiredDimensions: []
-          instanceNamePattern: Host on {host}
+          instanceNamePattern: Remote host on {host}
+          iconPattern: host
+
     - name: wmi:com_dynatrace_extension_host-observability_disk
       displayName: Disk
       enabled: true
@@ -616,8 +651,11 @@ topology:
             - pattern: '{disk.type}'
               key: wmi_disk_type
               displayName: Type
-          requiredDimensions: []
-          instanceNamePattern: Disk {disk.type} {disk.name} on {dt.entity.host}
+          requiredDimensions:
+            - key: device.name
+              valuePattern: $eq(localhost)
+          instanceNamePattern: Disk {disk.type} {disk.name} on {host.name}
+          iconPattern: hdd-discdrive
         - idPattern: wmi_host-observability_{host}_{disk.type}_{disk.name}
           sources:
             - sourceType: Metrics
@@ -631,6 +669,8 @@ topology:
               displayName: Type
           requiredDimensions: []
           instanceNamePattern: Disk {disk.type} {disk.name} on {host}
+          iconPattern: hdd-discdrive
+
     - name: wmi:com_dynatrace_extension_host-observability_network_device
       displayName: Network device
       enabled: true
@@ -646,8 +686,11 @@ topology:
             - pattern: '{network.type}'
               key: wmi_network_type
               displayName: Type
-          requiredDimensions: []
-          instanceNamePattern: Network {network.type} {network.name} on {dt.entity.host}
+          requiredDimensions:
+            - key: device.name
+              valuePattern: $eq(localhost)
+          instanceNamePattern: Network {network.type} {network.name} on {host.name}
+          iconPattern: network
         - idPattern: wmi_host-observability_{host}_{network.type}_{network.name}
           sources:
             - sourceType: Metrics
@@ -661,6 +704,8 @@ topology:
               displayName: Type
           requiredDimensions: []
           instanceNamePattern: Network {network.type} {network.name} on {host}
+          iconPattern: network
+  
   relationships:
     - typeOfRelation: CHILD_OF
       fromType: wmi:com_dynatrace_extension_host-observability_disk
@@ -700,6 +745,14 @@ screens:
         showTags: true
         showGlobalFilter: true
         showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: Remote Windows Host Monitoring
+          - type: ENTITY_LIST_REF
+            entityType: wmi:com_dynatrace_extension_host-observability_instance
+            displayName: Hosts
+          - type: ENTITY_REF
+            entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_instance), toRelationships.isChildOf($(entityConditions))"
       layout:
         autoGenerate: false
         cards:
@@ -784,6 +837,14 @@ screens:
         showTags: true
         showGlobalFilter: true
         showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: Remote Windows Host Monitoring
+          - type: ENTITY_LIST_REF
+            entityType: wmi:com_dynatrace_extension_host-observability_instance
+            displayName: Hosts
+          - type: ENTITY_REF
+            entitySelectorTemplate: "type(wmi:com_dynatrace_extension_host-observability_instance), toRelationships.isChildOf($(entityConditions))"
       layout:
         autoGenerate: false
         cards:
@@ -819,6 +880,28 @@ screens:
               - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.discarded.persec:splitBy()"
               - metricSelector: "com.dynatrace.extension.host-observability.network.packets.received.unknown.persec:splitBy()"
   - entityType: wmi:com_dynatrace_extension_host-observability_instance
+    propertiesCard:
+      displayOnlyConfigured: false
+      properties:
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_instance_name
+            displayName: Host
+    listSettings:
+      staticContent:
+        showGlobalFilter: true
+        header:
+          title: "Remote Windows Host Instances"
+          description: "Overview of all remote hosts monitored through WMI"
+          icon: host
+        breadcrumbs:
+          - type: NOOP
+            displayName: Remote Windows Host Monitoring
+      layout:
+        autoGenerate: false
+        cards:
+          - key: host_observability_list_self
+            type: ENTITIES_LIST
     detailsSettings:
       staticContent:
         showProblems: true
@@ -826,6 +909,14 @@ screens:
         showTags: true
         showGlobalFilter: true
         showAddTag: true
+        breadcrumbs:
+          - type: NOOP
+            displayName: Remote Windows Host Monitoring
+          - type: ENTITY_LIST_REF
+            entityType: wmi:com_dynatrace_extension_host-observability_instance
+            displayName: Hosts
+           
+
       layout:
         autoGenerate: false
         cards:
@@ -874,7 +965,7 @@ screens:
             - metricSelector: "com.dynatrace.extension.host-observability.host.threads:splitBy()"
     - key: "wmi_host_memory"
       displayName: "Memory"
-      numberOfVisibleCharts: 2
+      numberOfVisibleCharts: 3
       charts:
         - displayName: "Memory bytes usage"
           visualization:
@@ -897,14 +988,20 @@ screens:
             seriesType: COLUMN
           metrics:
             - metricSelector: "com.dynatrace.extension.host-observability.host.memory.pagefaults.persec:splitBy()"
-        - displayName: "Swap"
+        - displayName: "Swap memory per page"
           visualization:
             themeColor: DEFAULT
             seriesType: LINE
           metrics:
             - metricSelector: "com.dynatrace.extension.host-observability.host.swap.allocated:splitBy(\"host.swap.filename\")"
-            - metricSelector: "com.dynatrace.extension.host-observability.host.swap.current:splitBy(\"host.swap.filename\")"
             - metricSelector: "com.dynatrace.extension.host-observability.host.swap.peak:splitBy(\"host.swap.filename\")"
+        - displayName: "Swap memory"
+          visualization:
+            themeColor: ROYALBLUE
+            seriesType: AREA
+          metrics:
+            - metricSelector: com.dynatrace.extension.host-observability.host.swap.total
+            - metricSelector: com.dynatrace.extension.host-observability.host.swap.available
     - key: "wmi_host_network"
       displayName: "Network Traffic"
       numberOfVisibleCharts: 2
@@ -1106,3 +1203,41 @@ screens:
               - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.persec:splitBy()"
               - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.sent.persec:splitBy()"
               - metricSelector: "com.dynatrace.extension.host-observability.network.bytes.received.persec:splitBy()"
+      - key: "host_observability_list_self"
+        displayName: Remote Windows Host Monitoring instances
+        displayIcons: true
+        displayCharts: false
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 3
+        pageSize: 20
+        filtering:
+          entityFilters:
+            - displayName: Entity
+              filters:
+                - type: entityName
+                  entityTypes:
+                    - wmi:com_dynatrace_extension_host-observability_instance
+                  displayName: Name
+                  freeText: true
+                  modifier: contains
+                  defaultSearch: true
+                  distinct: false
+        charts:
+          - displayName: CPU Usage
+            visualization:
+              themeColor: BLUE
+              seriesType: AREA
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.host.cpu.time.processor:splitBy()"
+          - displayName: Used Memory
+            visualization:
+              themeColor: BLUE
+              seriesType: AREA
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.host.memory.bytes.commited.inuse:splitBy()"
+          - displayName: Pagefaults
+            visualization:
+              themeColor: PURPLE
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.host-observability.host.memory.pagefaults.persec:splitBy()"
